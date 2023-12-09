@@ -10,6 +10,25 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0-focal
 WORKDIR /app
 COPY --from=build /app ./
 
-EXPOSE 5000
+EXPOSE 80
+EXPOSE 443
 
 ENTRYPOINT [ "dotnet", "API.dll" ]
+
+# DOTNET CLI Commands to create, build and run .net project
+# -> dotnet --info
+# -> dotnet new list
+# -> dotnet new sln
+# -> dotnet new webapi -n API
+# -> dotnet sln add API
+# -> dotnet clean
+# -> dotnet restore
+# -> dotnet build
+# -> dotnet run or dotnet watch run
+
+# Create and Run docker image inside container
+# Add Docekerfile at root sln level
+# -> docker build --rm -t my-docker-image:latest .
+# -> docker ps -a
+# -> docker run -it --rm -p 6002:80 my-docker-image:latest
+# -> docker ps -a
